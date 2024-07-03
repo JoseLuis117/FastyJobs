@@ -2,32 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.bg-login{
+  background-image: url("https://img.freepik.com/foto-gratis/feliz-apreton-manos-candidato-masculino-gerente-despues-exitosa-entrevista-trabajo-oficina_637285-6558.jpg?t=st=1720030207~exp=1720033807~hmac=680737ee437d1ef8636aabed8a1199856467d45e59084b715fcc980eaf5ffe26&w=1380");
+  background-size: cover;
+  background-position: center;
 }
