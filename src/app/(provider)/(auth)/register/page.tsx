@@ -98,7 +98,7 @@ export default function page() {
             </div>
             <div className='flex gap-1 justify-center'>
                 <p className='text-gray-500'>¿Ya tienes una cuenta?</p>
-                <Link href={'register'} className='text-primary'>Inicia sesión</Link>
+                <Link href={'login'} className='text-primary'>Inicia sesión</Link>
             </div>
         </>
     )

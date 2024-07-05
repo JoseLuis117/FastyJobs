@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import reduxStore from "@/slices/store/reduxStore";
 
-const inter = Poppins({ subsets:['latin'] ,weight: ["300", "400", "600", "700", "800"] });
+const inter = Poppins({ subsets: ['latin'], weight: ["300", "400", "600", "700", "800"] });
 
 export const metadata: Metadata = {
   title: "FastyJobs",
@@ -15,11 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-      </head>
-      <body className={`${inter.className} main-theme bg-white min-h-screen`}>{children}</body>
-    </html>
+      <html lang="es">
+        <head>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+        </head>
+        <body className={`${inter.className} main-theme bg-white min-h-screen`}>{children}</body>
+      </html>
   );
 }

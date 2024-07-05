@@ -4,10 +4,12 @@ import { Button } from '@nextui-org/button'
 import { Checkbox } from '@nextui-org/checkbox'
 import { Input } from '@nextui-org/input'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import { Alert } from '@/components'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux'
+import { login } from '@/slices/auth/authSlice'
 
 interface FormInputs {
     email: string,
@@ -16,13 +18,19 @@ interface FormInputs {
 interface responseTypes {
     error?: string,
     message?: string
-    ok: boolean
+    ok: boolean,
+    userData: {
+        email: string,
+        name: string,
+        id: string
+    }
 }
 export default function page() {
     const [isSelected, setIsSelected] = React.useState(false);
     const router = useRouter();
     const searchParams = useSearchParams()
     const search = searchParams.get('confirmed')
+    const dispatch = useDispatch();
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
     const [error, setError] = useState<string>('');
@@ -37,7 +45,8 @@ export default function page() {
         const result: responseTypes = await response.json();
         console.log(result);
         if (result.ok) {
-            router.push('/index')
+            dispatch(login(result.userData))
+            router.push('/index');
         } else {
             setError(result.error!);
         }

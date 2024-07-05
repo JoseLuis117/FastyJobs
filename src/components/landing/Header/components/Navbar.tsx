@@ -1,23 +1,22 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem } from '@nextui-org/navbar';
 import { Button } from '@nextui-org/button';
 import { Link } from '@nextui-org/link';
-export const NavbarHeader = ({ footer = false }: { footer?: boolean }) => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+export interface Props {
+    footer?: boolean
+    children?: React.ReactNode,
+}
+export const NavbarHeader = ({ footer = false, children }: Props) => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const menuItems = [
-        "Profile",
-        "Dashboard",
-        "Activity",
-        "Analytics",
-        "System",
-        "Deployments",
-        "My Settings",
-        "Team Settings",
-        "Help & Feedback",
-        "Log Out",
+        "INICIO",
+        "NUESTROS SERVICIOS",
+        "SOBRE NOSOTROS",
+        "TESTIMONIOS",
+        "INICIAR SESIÓN",
     ];
     return (
 
@@ -26,8 +25,9 @@ export const NavbarHeader = ({ footer = false }: { footer?: boolean }) => {
                 isMenuOpen={isMenuOpen}
                 onMenuOpenChange={setIsMenuOpen}
                 className='h-20 bg-background/100'
+                isBlurred={false}
                 classNames={{
-                    toggleIcon: "after:bg-foreground before:bg-foreground",
+                    toggleIcon: "after:bg-white before:bg-white",
                     base: footer ? "static" : "sticky",
                     menu: 'mt-4'
                 }}
@@ -45,53 +45,55 @@ export const NavbarHeader = ({ footer = false }: { footer?: boolean }) => {
                     </a>
                 </NavbarContent>
 
-                <NavbarContent className="hidden lg:flex gap-8" justify="center">
-                    <NavbarItem>
-                        <a href="#home" className='hover:text-titles text-white'>
-                            INICIO
-                        </a>
-                    </NavbarItem>
-                    <NavbarItem >
-                        <a href="#services" color="foreground" className='hover:text-titles text-white' aria-current="page">
-                            NUESTROS SERVICIOS
-                        </a>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <a color="foreground" className='hover:text-titles text-white' href="#about">
-                            SOBRE NOSOTROS
-                        </a>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <a color="foreground" className='hover:text-titles text-white' href="#testimonials">
-                            TESTIMONIOS
-                        </a>
-                    </NavbarItem>
-                </NavbarContent>
-                <NavbarContent justify="end">
-                    <NavbarItem>
-                        <Link href="login">
-                            <Button variant='solid' color='primary' className='text-xs sm:text-sm'>
-                                INICIAR SESIÓN
-                            </Button>
-                        </Link>
-                    </NavbarItem>
-                </NavbarContent>
-                <NavbarMenu>
-                    {menuItems.map((item, index) => (
-                        <NavbarMenuItem key={`${item}-${index}`}>
-                            <Link
-                                color={
-                                    index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                                }
-                                className="w-full"
-                                href="#"
-                                size="lg"
-                            >
-                                {item}
-                            </Link>
-                        </NavbarMenuItem>
-                    ))}
-                </NavbarMenu>
+                {children ? children :
+                    <>
+                        <NavbarContent className="hidden lg:flex gap-8" justify="center">
+                            <NavbarItem>
+                                <a href="#home" className='hover:text-titles text-white'>
+                                    INICIO
+                                </a>
+                            </NavbarItem>
+                            <NavbarItem >
+                                <a href="#services" color="foreground" className='hover:text-titles text-white' aria-current="page">
+                                    NUESTROS SERVICIOS
+                                </a>
+                            </NavbarItem>
+                            <NavbarItem>
+                                <a color="foreground" className='hover:text-titles text-white' href="#about">
+                                    SOBRE NOSOTROS
+                                </a>
+                            </NavbarItem>
+                            <NavbarItem>
+                                <a color="foreground" className='hover:text-titles text-white' href="#testimonials">
+                                    TESTIMONIOS
+                                </a>
+                            </NavbarItem>
+                        </NavbarContent>
+                        <NavbarContent justify="end">
+                            <NavbarItem>
+                                <Link href="login">
+                                    <Button variant='solid' color='primary' className='text-xs sm:text-sm'>
+                                        INICIAR SESIÓN
+                                    </Button>
+                                </Link>
+                            </NavbarItem>
+                        </NavbarContent>
+                        <NavbarMenu>
+                            {menuItems.map((item, index) => (
+                                <NavbarMenuItem key={`${item}-${index}`}>
+                                    <Link
+                                        className="w-full text-white"
+                                        href="#"
+                                        size="lg"
+                                    >
+                                        {item}
+                                    </Link>
+                                </NavbarMenuItem>
+                            ))}
+                        </NavbarMenu>
+                    </>
+                }
+
             </Navbar>
             {footer &&
                 <div className='bg-background p-4'>
