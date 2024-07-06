@@ -4,14 +4,16 @@ export interface initialStateAuthProps {
     name: string | undefined,
     profession: string | undefined,
     id: string | undefined,
-    imageUrl: string | undefined
+    imageUrl: string | undefined,
+    balance: number | undefined
 }
 const initialState: initialStateAuthProps = {
     email: undefined,
     name: undefined,
     profession: undefined,
     id: undefined,
-    imageUrl: undefined
+    imageUrl: undefined,
+    balance: undefined
 }
 const auth = createSlice({
     name: "auth",
@@ -22,8 +24,9 @@ const auth = createSlice({
             state.name = payload.name;
             state.profession = payload.profession;
             state.id = payload.id;
-            state.profession = payload.profession,
-            state.imageUrl = payload.imageUrl
+            state.profession = payload.profession;
+            state.imageUrl = payload.imageUrl;
+            state.balance = payload.balance;
         }
     },
 

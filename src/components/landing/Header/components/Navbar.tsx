@@ -8,8 +8,9 @@ import { Link } from '@nextui-org/link';
 export interface Props {
     footer?: boolean
     children?: React.ReactNode,
+    href?:string
 }
-export const NavbarHeader = ({ footer = false, children }: Props) => {
+export const NavbarHeader = ({ footer = false, href="#home", children }: Props) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const menuItems = [
         "INICIO",
@@ -37,7 +38,7 @@ export const NavbarHeader = ({ footer = false, children }: Props) => {
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         className="lg:hidden"
                     />}
-                    <a href='#home' className='text-white'>
+                    <a href={href} className='text-white'>
                         <NavbarBrand className='flex gap-3'>
                             <Image src={'icons/logo.svg'} width={50} height={50} alt='FastyJobs Icon' />
                             <p className="font-bold text-white">FASTYJOBS</p>

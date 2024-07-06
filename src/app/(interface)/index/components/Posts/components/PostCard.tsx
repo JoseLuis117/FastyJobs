@@ -5,7 +5,7 @@ export interface CardProps {
 }
 export const PostCard = ({ children, className='' }: CardProps) => {
     return (
-        <div className={`${className} shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4`}>
+        <div className={`${className} shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-4 bg-white`}>
             {children}
         </div>
     )

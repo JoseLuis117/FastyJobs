@@ -16,6 +16,7 @@ export async function POST(req: Request) {
     const name = data.user?.user_metadata.name;
     const profession = data.user?.user_metadata.profession;
     const imageUrl = data.user?.user_metadata.imageUrl;
+    const balance = data.user?.user_metadata.imageUrl;
     const id = data.user?.id;
     console.log("User email")
     console.log(userEmail);
@@ -23,13 +24,15 @@ export async function POST(req: Request) {
     console.log(name)
     console.log("Id")
     console.log(id);
-
+    console.log("Balance")
+    console.log(balance)
     const userData = Object.assign({
         email:userEmail,
         name:name,
         id:id,
         profession:profession,
-        imageUrl:imageUrl
+        imageUrl:imageUrl,
+        balance:balance
     })
     if (error) {
         return Response.json({ ok: false, error: error.message })

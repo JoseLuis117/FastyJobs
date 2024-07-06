@@ -1,12 +1,12 @@
 import { createClient } from "@/utils/supabase/server";
 
 export async function POST(req: Request) {
-    const { name, email, password } = await req.json()
+    const { name, email, password } = await req.json();
     const supabase = createClient();
     const { error } = await supabase.auth.signUp({
         email, password, options: {
             data: {
-                name
+                name, balance:0, description:"",location:"",tel:"",imageUrl:""
             },
             emailRedirectTo:`${process.env.NEXT_PUBLIC_FRONT_URL}/login?confirmed=true`
         }

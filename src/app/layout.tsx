@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import reduxStore from "@/slices/store/reduxStore";
 
 const inter = Poppins({ subsets: ['latin'], weight: ["300", "400", "600", "700", "800"] });
 
