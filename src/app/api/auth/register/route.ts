@@ -6,9 +6,9 @@ export async function POST(req: Request) {
     const { error } = await supabase.auth.signUp({
         email, password, options: {
             data: {
-                name, balance:0, description:"",location:"",tel:"",imageUrl:""
+                name, balance:0, description:"Sin biografía",location:"Sin ubicación",tel:"Sin número",imageUrl:"",profession:"Sin profesión"
             },
-            emailRedirectTo:`${process.env.NEXT_PUBLIC_FRONT_URL}/login?confirmed=true`
+            emailRedirectTo:`${process.env.NEXT_PUBLIC_FRONT_URL}/login`
         }
     })
     if (error) {

@@ -26,9 +26,9 @@ export function useSession() {
                     imageUrl,
                     id: id,
                     balance: balance,
-                    tel:tel,
-                    location:location,
-                    description:description
+                    tel: tel,
+                    location: location,
+                    description: description
                 })
                 setSession(userData);
             } else {
@@ -36,8 +36,36 @@ export function useSession() {
             }
         }
         verifySession();
-    }, [])
-    return{
-        ...session
+    }, [router])
+    async function refreshUserData() {
+        const supabase = createClient();
+        const { error, data } = await supabase.auth.getUser();
+        if (!error) {
+            const userEmail = data.user?.email;
+            const name = data.user?.user_metadata.name;
+            const profession = data.user?.user_metadata.profession;
+            const imageUrl = data.user?.user_metadata.imageUrl;
+            const id = data.user?.id;
+            const balance = data.user.user_metadata.balance;
+            const tel = data.user.user_metadata.tel;
+            const location = data.user.user_metadata.location;
+            const description = data.user.user_metadata.description;
+            const userData = {
+                email: userEmail!,
+                name,
+                profession,
+                imageUrl,
+                id,
+                balance,
+                tel,
+                location,
+                description
+            };
+            setSession(userData);
+        }
+    }
+    return {
+        ...session,
+        refreshUserData
     }
 }

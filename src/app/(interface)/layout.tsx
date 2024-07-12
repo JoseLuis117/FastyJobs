@@ -6,7 +6,7 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-o
 import { Link } from "@nextui-org/link";
 import { NavbarContent, NavbarMenu, NavbarMenuItem } from "@nextui-org/navbar";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSession } from "./hooks/useSession";
 export default function layout({ children }: { children: React.ReactNode[] }) {
     const router = useRouter();
